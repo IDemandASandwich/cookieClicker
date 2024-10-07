@@ -1,3 +1,5 @@
+package com.example.cookieclicker
+
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 

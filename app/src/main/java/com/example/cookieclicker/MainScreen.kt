@@ -1,6 +1,5 @@
 package com.example.cookieclicker
 
-import ScoreboardViewModel
 import android.os.CountDownTimer
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
