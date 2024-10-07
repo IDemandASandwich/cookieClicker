@@ -1,5 +1,6 @@
 package com.example.cookieclicker
 
+import ScoreboardViewModel
 import android.os.CountDownTimer
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -34,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cookieclicker.ui.theme.CookieClickerTheme
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Preview
 @Composable
@@ -49,7 +51,8 @@ fun PreviewMainScreen(modifier: Modifier = Modifier){
 
 @Composable
 fun MainScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: ScoreboardViewModel = viewModel()
 ){
     var cookieAmount by remember { mutableIntStateOf(0) }
     var timerRunning by remember { mutableStateOf(false) }
@@ -72,6 +75,7 @@ fun MainScreen(
                         onTimerTick = { time -> timeLeft = time },
                         onTimerFinish = {
                             isClickable = false
+                            viewModel.addScore(username.ifEmpty{"Anonymous"}, cookieAmount)
                             startTimer(
                                 time = 2000L,
                                 onTimerFinish = {

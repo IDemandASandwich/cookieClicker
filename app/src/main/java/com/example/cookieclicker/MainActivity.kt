@@ -1,7 +1,7 @@
 package com.example.cookieclicker
 
+import ScoreboardViewModel
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -15,6 +15,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -50,6 +51,8 @@ fun CookieClickerApp(
         backStackEntry?.destination?.route ?: Screen.Main.name
     )
 
+    val viewModel: ScoreboardViewModel = viewModel()
+
     Scaffold(
         topBar = {
             CookieAppBar(
@@ -73,12 +76,15 @@ fun CookieClickerApp(
                 MainScreen(
                     modifier = Modifier
                         .fillMaxSize()
-                        .wrapContentSize(Alignment.Center)
+                        .wrapContentSize(Alignment.Center),
+                    viewModel = viewModel
                 )
             }
             composable(route = Screen.Scoreboard.name) {
                 ScoreboardScreen(
-
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    viewModel = viewModel
                 )
             }
         }
