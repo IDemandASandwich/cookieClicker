@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CookieClicker</string>
+    <string name="scoreboard">Scoreboard</string>
+    <string name="scoreboard_button">Show Scoreboard</string>
+    <string name="cookies_amount">%s</string>
+    <string name="timer">%ss</string>
+    <string name="cookie_image_txt">Cookie Image</string>
+</resources>
